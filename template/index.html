@@ -1,0 +1,158 @@
+{% extends "layout.html"%}
+    {% block body%}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{url_for('static',filename='img/home-bg.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Text-to-Speech</h1>
+            <span class="subheading">A Text-to-Speech System by LeapForWord</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content --> 
+<div class="container" id="changeThis">
+  <div class="row" id="changetorecorded">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      
+      <!-- <form name="sentMessage" id="text" novalidate method="get">  -->
+       <textarea rows="3" class="form-control" placeholder="Enter Text Here" name="word" id="word" required data-validation-required-message="Please enter a message."></textarea>
+        <div id="showSpanHere">
+        </div>
+          <br>
+          <button id='start'class='btn btn-default' onclick="readWord()">Start</button>
+          <button type="submit" class='btn btn-default' onclick="pause()">Pause</button>
+          <button type="submit" class='btn btn-default' onclick="unpause()">Unpause</button>
+
+     <!--  </form> -->
+      <hr>
+          <button type="submit" class="btn btn-primary" onclick="get_title()">Fetch recorded data</button>
+    </div>
+    <form name="sendData" id="contactForm" novalidate method="post" action="/upload_data">
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Title</label>
+              <input type="text" class="form-control" placeholder="Enter Subtitle" id="title" name="title" required data-validation-required-message="Enter Subtitle">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Subtitle</label>
+              <input type="text" class="form-control" placeholder="Enter Subtitle" id="subtitle" name="subtitle" required data-validation-required-message="Please enter your email address.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+           <button type="submit" class="btn btn-primary">Upload data</button>
+        </form>
+  </div> 
+</div>           
+<br>
+{%endblock%}
+
+{% block script %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+  function readWord(){
+      var word=document.getElementById('word')
+      var printWord={
+        word:word.value
+      }; console.log(word.value)
+
+      // var wordV = $(this).val();
+
+    $.ajax({
+      url: "/get_word",
+      type: "post",
+      data:  {word:word.value},
+      success: function(response) {
+        $("#showSpanHere").html(response);
+      },
+      error: function() {
+        //Do Something to handle error
+      }
+    })
+     .done(function changeColor(){
+        var str=word.value
+        console.log(str);
+        for(var i = 0; i < str.length; i++){
+          let taskCompleted = task(i);
+        }
+        function task(i){
+        setTimeout(function() { 
+          $("#"+i).addClass("fcolor")
+        },400*i)    
+        }
+      })
+
+  }
+
+
+function pause(){
+  $.ajax({
+          type:"POST",
+          data:{
+            word:word.value
+          },
+          datatype:"json",
+          url:"/pause",
+          success:function(response){
+            console.log(response);
+          },
+          error: function(error){
+          alert(error);
+          }
+        })
+}
+
+function unpause(){
+  $.ajax({
+          type:"POST",
+          data:{
+            word:word.value
+          },
+          datatype:"json",
+          url:"/unpause",
+          success:function(response){
+            console.log(response);
+          },
+          error: function(error){
+          alert(error);
+          }
+        })
+}
+
+function get_title(){
+  $.ajax({
+  type: 'post',
+  url:'/get_title',
+  data:{
+    word:word.value
+  },
+    success: function(response){
+    $("#changeThis").html(response);
+    },
+    error: function() {
+      //Do Something to handle error
+    }
+  })  
+}
+
+  </script>
+ 
+  
+    <style type="text/css">
+            .fcolor{
+              color: Red; 
+            }
+    </style>
+
+
+{% endblock %}
+   

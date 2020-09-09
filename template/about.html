@@ -1,0 +1,31 @@
+{% extends "layout.html"%}
+  {% block body%}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{url_for('static',filename='img/about-bg.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>About LeapForWord</h1>
+            <span class="subheading">This is what we do.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p>Text-to-speech (TTS) is a type of  assistive technology that reads digital text aloud. It’s sometimes called “read aloud” technology.</p>
+        <p>With a click of a button or the touch of a finger, TTS can take words on a computer or other digital device and convert them into audio. TTS is very helpful for kids who struggle with reading.</p>
+        <p>But it can also help kids with writing and editing, and even focusing.</p>
+        <p>TTS works with nearly every personal digital device, including computers, smartphones and tablets. All kinds of text files can be read aloud, including Word and Pages documents. Even online web pages can be read aloud.</p>
+      </div>
+    </div>
+  </div>
+
+ {% endblock %}

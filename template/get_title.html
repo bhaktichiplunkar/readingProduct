@@ -1,0 +1,19 @@
+<div class="container" id="changeThis">
+  <div class="row" id="changetorecorded">
+     <div class="col-lg-8 col-md-10 mx-auto">
+          <ul>
+            {%for d in data %}
+             <a href="/get_content{{d.id}}"><li>{{d.title}}</li></a>
+            <hr>
+            {% endfor %}
+          </ul>
+              <p class="help-block text-danger"></p>
+        <!-- Pager -->
+          <div id="success">
+           <a class="btn btn-primary float-left" id="prev" href="/">&larr; Back</a>
+          <!--  <a class="btn btn-primary float-right" id="next" href="/">Next &rarr;</a> -->
+          </div>
+          <br>
+     </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Text-to-Speech</title>
+	<link rel="stylesheet" type="text/css" href={{url_for('static',filename='css/front.css')}}>
+	
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS Strat -->
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Bootstrap CSS End -->
+
+    <!-- font Awesome CSS Start -->
+    	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- font Awesome CSS End -->
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Jquery CDN Start -->
+    	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- Jquery CDN End -->
+
+
+    <style type="text/css">
+  					.bg{
+  						background-color: yellow; 
+  					}
+  				</style>
+
+</head>
+<body>
+    <!-- <form id="user_input" name="user_input" novalidate="novalidate" action="/converter" method="post">	 -->
+	<div id="firstdiv" align="center">
+		<h1>Text to Speech</h1>
+		<div id="seconddiv">
+			<strong><label style="color:red">Enter Text : </label></strong>
+			<br>
+				<textarea  class="form-control" id="text" cols="18" rows="8" input type="submit" name="text" placeholder="Enter Text" required="required" data-validation-required-message="Please enter a message."></textarea>
+			<br>
+  				
+  				<span id="1"  class="text-capitalize">Hello</span>
+  				<span id="2" class="text-capitalize">welcome</span>
+  				<span id="3" class="text-capitalize">to</span>
+  				<span id="4" class="text-capitalize">the</span>
+  				<span id="5" class="text-capitalize">world</span>
+  				<span id="6" class="text-capitalize">of</span>
+  				<span id="7" class="text-capitalize">LeapForWord..</span>
+
+  				<button onclick="Readwords(7)">Start</button>
+
+            <br>  
+		</div>
+	</div>
+	<!-- </form> -->
+
+<script type="text/javascript">
+	function Readwords(endNumber) {
+		let	count=0;
+		for (var i = 1; i <= endNumber ; i++) {
+			// $("#"+(i)).removeClass("bg");
+
+			let taskCompleted = task(i);
+		}
+
+		function task(i) { 
+		  	let word=$("#"+i).text();
+		 	console.log(word);
+
+		 	setTimeout(function() { 
+		 	$("#"+i).addClass("bg");		  		
+		
+		  	},5000*i); 
+		} 
+	}
+</script>
+</body>
+</html>
