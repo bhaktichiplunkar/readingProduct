@@ -1,0 +1,24 @@
+body{
+  align-self:  center; 
+}
+
+#firstdiv
+{
+    background-color: #ABDADC;
+    width: 50%;
+    margin: 0 auto;
+    margin-top:100px; 
+    margin-left:250px;
+    padding: 50px; 
+    box-shadow: 10px 10px 5px #888888;
+    display: inline-block;
+}
+#seconddiv
+{
+    background-color: skyblue;
+    width: 50%;
+    margin: 0 auto;
+    padding: 50px; 
+    box-shadow: 10px 10px 5px #888888;
+    display: inline-block;
+}
